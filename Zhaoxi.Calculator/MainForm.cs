@@ -81,10 +81,7 @@ namespace Zhaoxi.Calculator
             {
                 if (string.IsNullOrEmpty(exp))
                     exp += "0";
-                if (exp.IndexOf('.') <= 0)
-                {
-                    exp += button.Text;
-                }
+                exp += button.Text;
             }
             else
             {
@@ -128,6 +125,7 @@ namespace Zhaoxi.Calculator
             catch (Exception ex)
             {
                 Console.WriteLine("捕获到异常: " + ex.Message);
+                exp = "表达式有误!";
             }
             this.label1.Text = ExchangeExp(exp);
         }
@@ -140,10 +138,13 @@ namespace Zhaoxi.Calculator
             return showExp;
         }
 
+        /// <summary>
+        /// 点击清空按钮
+        /// </summary>
         private void button17_Click(object sender, EventArgs e)
         {
             exp = "";
-            this.label1.Text = ExchangeExp(exp);
+            this.label1.Text = ExchangeExp(exp) + "0";
         }
     }
 
